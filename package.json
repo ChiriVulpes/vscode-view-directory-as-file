@@ -1,0 +1,56 @@
+{
+	"name": "view-directory-as-file",
+	"displayName": "View Directory as File",
+	"description": "A VSCode extension to view an entire directory as a single file.",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.80.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onFileSystem:directoryfile"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "view-directory-as-file.viewDirectoryAsFile",
+				"title": "View Directory as File"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "view-directory-as-file.viewDirectoryAsFile",
+					"when": "explorerResourceIsFolder",
+					"group": "myGroup@1"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.80.0",
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "20.2.5",
+		"@typescript-eslint/eslint-plugin": "^6.2.0",
+		"@typescript-eslint/parser": "^6.2.0",
+		"eslint": "^8.45.0",
+		"glob": "^8.1.0",
+		"mocha": "^10.2.0",
+		"typescript": "^5.1.6",
+		"@vscode/test-electron": "^2.3.3",
+		"@types/eslint": "8.44.1",
+		"eslint-plugin-only-warn": "1.1.0"
+	}
+}
